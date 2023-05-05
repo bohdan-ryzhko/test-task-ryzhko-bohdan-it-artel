@@ -1,0 +1,29 @@
+.container {
+  width: 60px;
+  height: 40px;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  outline: 1px solid #000;
+}
+
+// варіант №1
+.container-1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// варіант №2
+.container-2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+// варіант №3
+.box-3 {
+  float: left;
+}
