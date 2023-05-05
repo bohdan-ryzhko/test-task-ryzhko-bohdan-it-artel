@@ -1,0 +1,1 @@
+export const handleShowId = ({ target }) => console.log(target.id);
