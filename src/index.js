@@ -1,18 +1,26 @@
 import './sass/styles.scss';
 
-//import function sort by id
+const BEFOREEND = process.env.BEFOREEND;
+
+//import dom
+import { dom } from './js/dom';
+//import function sort by date
 import { sortArrayByDate } from './js/sort-by-data';
 // import function show in console id on click
 import { handleShowId } from './js/handleShowId';
 //import array of date
 import dateArray from "./data/array-of-date";
+// import timer function
+import { timer } from './js/observabel';
 
-// get element with id = sort-array-by-date
-const sortArrayByDateElement = document.querySelector("#sort-array-by-date");
 // show in sortArrayByDateElement array
-sortArrayByDateElement.insertAdjacentHTML("beforeend", JSON.stringify(sortArrayByDate(dateArray)));
+dom.sortArrayByDateElement.insertAdjacentHTML(BEFOREEND, JSON.stringify(sortArrayByDate(dateArray)));
 
-// get element with id = root
-const root = document.getElementById("root");
 // handle event listener on click, show in console id
-root.addEventListener("click", handleShowId);
+dom.root.addEventListener("click", handleShowId);
+
+// show value befo 2 seconds
+timer(2).subscribe({
+	next: value => console.log(value),
+	complete: done => console.log(done),
+});
