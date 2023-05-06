@@ -8,11 +8,7 @@ async function printFiles () {
 	// 	console.log(contents)
 	// })
 
-	return Promise.all(files.map(async file => {
-		const contents = await fs.readerFiles(file, "utf8");
-		console.log(contents);
-		return contents;
-	}));
+	return Promise.all(files.map(async file => await fs.readFile(file, 'utf8')));
 }
 
 /* Схема обробки функції printFiles, так як вона асинхронна, 
@@ -21,10 +17,8 @@ async function printFiles () {
 */
 printFiles()
 	.then(readerFiles => { /* readerFiles - це буде масив з прочитаних файлів */
-		if (!readerFiles) throw new Error(readerFiles);
+		if (!readerFiles === 0) throw new Error(readerFiles);
 
-		readerFiles.forEach(file => {
-			console.log(file);
-		});
+		readerFiles.forEach(file => console.log(file));
 	})
 	.catch(error => console.log(error));
