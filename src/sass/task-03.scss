@@ -1,6 +1,5 @@
 .container {
   width: 60px;
-  height: 40px;
 }
 
 .box {
@@ -24,6 +23,10 @@
 }
 
 // варіант №3
+
+.container-3 {
+  height: 40px;
+}
 .box-3 {
   float: left;
 }
