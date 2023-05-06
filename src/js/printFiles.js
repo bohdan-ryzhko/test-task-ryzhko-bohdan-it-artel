@@ -19,7 +19,7 @@ async function printFiles () {
 */
 printFiles()
 	.then(readerFiles => { /* readerFiles - це буде масив з прочитаних файлів */
-		if (!readerFiles === 0) throw new Error(readerFiles);
+		if (readerFiles.length === 0) throw new Error(readerFiles);
 
 		readerFiles.forEach(file => console.log(file));
 	})
