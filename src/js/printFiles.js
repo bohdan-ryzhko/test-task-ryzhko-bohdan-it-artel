@@ -1,4 +1,6 @@
-import fs from 'fs-promise'
+import fs from 'fs-promise';
+
+const contentCb = async file => await fs.readFile(file, 'utf8');
 
 async function printFiles () {
 	const files = await getFilePaths() // Assume this works fine
@@ -8,7 +10,7 @@ async function printFiles () {
 	// 	console.log(contents)
 	// })
 
-	return Promise.all(files.map(async file => await fs.readFile(file, 'utf8')));
+	return Promise.all(files.map(contentCb));
 }
 
 /* Схема обробки функції printFiles, так як вона асинхронна, 
