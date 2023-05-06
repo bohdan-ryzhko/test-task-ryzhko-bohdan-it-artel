@@ -1,6 +1,7 @@
 import './sass/styles.scss';
 
 const BEFOREEND = process.env.BEFOREEND;
+const CLICK = process.env.CLICK;
 
 //import dom
 import { dom } from './js/dom';
@@ -17,10 +18,14 @@ import { timer } from './js/observabel';
 dom.sortArrayByDateElement.insertAdjacentHTML(BEFOREEND, JSON.stringify(sortArrayByDate(dateArray)));
 
 // handle event listener on click, show in console id
-dom.root.addEventListener("click", handleShowId);
+dom.root.addEventListener(CLICK, handleShowId);
 
 // show value befo 2 seconds
 timer(2).subscribe({
 	next: value => console.log(value),
 	complete: done => console.log(done),
 });
+
+// import use "require" function sum
+const sum = require("./js/sum");
+console.log(sum(10, 30));
