@@ -510,12 +510,27 @@
     </code></pre>
       <p>Відповідь:</p>
       <p>
-        Основна проблема - це використання методу forEach в такому вигляді, він не чекає на виконання асинхронних
-        операцій.
-        В момент виконання forEach значення files === undefined, тому працювати це не буде.
+        Основна проблема - це використання методу forEach, він не чекає на виконання асинхронних
+        операцій. Ось, як це можна вирішити:
       </p>
+      <pre style="border: 1px solid grey; padding: 10px">
+        <code>
+          import fs from 'fs-promise'
+          
+          async function printFiles () {
+            const files = await getFilePaths() // Assume this works fine
+            
+            for(const file of files) {
+              const contentFile = await fs.readFile(file, 'utf8');
+              console.log(contentFile);
+            }
+          }
+          
+          printFiles()
+          </code>
+        </pre>
       <p>
-        В файлі під назвою "printFiles.js" є приклад, який повинен працювати. <br>
+        В файлі під назвою "printFiles.js" є приклад, як я би написав цю функцію.<br>
         Я використовую метод <code>Promise.all</code>, який дає гарантію, що він дочекається виконання всіх промісів.
         <br>
         В цей метод передаю преобразований масив, використовуючи метод "map", із значеннями, які нам потрібні і повертаю
