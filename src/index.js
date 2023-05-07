@@ -1,8 +1,6 @@
 import './sass/styles.scss';
 
-const BEFOREEND = process.env.BEFOREEND;
-const CLICK = process.env.CLICK;
-
+import { constants } from './js/constants';
 //import dom
 import { dom } from './js/dom';
 //import function sort by date
@@ -15,10 +13,10 @@ import dateArray from "./data/array-of-date";
 import { timer } from './js/observabel';
 
 // show in sortArrayByDateElement array
-dom.sortArrayByDateElement.insertAdjacentHTML(BEFOREEND, JSON.stringify(sortArrayByDate(dateArray)));
+dom.sortArrayByDateElement.insertAdjacentHTML(constants.BEFOREEND, JSON.stringify(sortArrayByDate(dateArray)));
 
 // handle event listener on click, show in console id
-dom.root.addEventListener(CLICK, handleShowId);
+dom.root.addEventListener(constants.CLICK, handleShowId);
 
 // show value befo 2 seconds
 timer(2).subscribe({

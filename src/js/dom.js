@@ -1,7 +1,6 @@
-const SORT_ARRAY_BY_DATE = process.env.SORT_ARRAY_BY_DATE;
-const ROOT = process.env.ROOT;
+import { constants } from "./constants"
 
 export const dom = {
-	sortArrayByDateElement: document.getElementById(SORT_ARRAY_BY_DATE),
-	root: document.getElementById(ROOT),
+	sortArrayByDateElement: document.getElementById(constants.SORT_ARRAY_BY_DATE),
+	root: document.getElementById(constants.ROOT),
 }
